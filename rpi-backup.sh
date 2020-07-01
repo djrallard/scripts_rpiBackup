@@ -17,7 +17,7 @@ cd /mnt/rpi_backup
 ls -trd *.img.gz | head -n -5 | xargs --no-run-if-empty rm --
 
 #run tempmonitor script to log current rpi temp
-echo "---GenMonPi Backup Script---" >> /mnt/genmon_backup/_tempmonitor.log
-bash /mnt/genmon_backup/_tempmonitor.sh
+echo "---rPi Backup Script---" >> /mnt/rpi_backup/rpi-temperature.log
+bash /mnt/rpi_backup/rpi-temperature.sh
 
 exit
