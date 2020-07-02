@@ -8,7 +8,7 @@ OFILEFINAL=$OFILE.img.gz
 BACKUPLOC=/mnt/rpi_backup #this is auto mounted to a Windows share via an fstab entry (see README.md)
 LOCALDIR=/dev/mmcblk0
 
-#sudo dd if=$LOCALDIR of=$BACKUPLOC/$OFILEFINAL bs=1M
+# Copy to image file using DD and gzip
 sudo dd if=$LOCALDIR | gzip -1 - | dd  of=$BACKUPLOC/$OFILEFINAL
 
 # check the backup directory on the Windows share and 
@@ -16,8 +16,8 @@ sudo dd if=$LOCALDIR | gzip -1 - | dd  of=$BACKUPLOC/$OFILEFINAL
 cd /mnt/rpi_backup
 ls -trd *.img.gz | head -n -5 | xargs --no-run-if-empty rm --
 
-#run tempmonitor script to log current rpi temp
-echo "---rPi Backup Script---" >> /mnt/rpi_backup/rpi-temperature.log
-bash /mnt/rpi_backup/rpi-temperature.sh
+# **Optional** run tempmonitor script to log current rpi temp
+#echo "---rPi Backup Script---" >> /mnt/rpi_backup/rpi-temperature.log
+#bash /mnt/rpi_backup/rpi-temperature.sh
 
 exit
