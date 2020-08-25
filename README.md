@@ -1,12 +1,12 @@
 # RaspberryPi Scripts for Automated Backup, Updates, and Monitoring
 
-This project consists of several scripts written to support a personal RaspberryPi project that I have had successfully running for over a year. Being new to RaspberryPi, and very rusty with bash scripting, it took some time, and a lot of changes to nail down the final working versions of these scripts. I've seen many people asking about RaspberryPi backups on various Pi Facebook groups, so I decided to share them here. I hope someone else can find them useful in thier project.
+This project consists of several scripts written to support a personal RaspberryPi project that I have had successfully running for over a year. Being new to RaspberryPi, and very rusty with bash scripting, it took some time, and a lot of changes to nail down the final working versions of these scripts. I've seen many people asking about RaspberryPi backups on various Pi Facebook groups, so I decided to share them here. I hope someone else can find them useful in their project.
 
 ## Who are these scripts for?
 
 * Anyone who is looking for a simple, automated, live backup process for their raspberryPi project.
-* Anyone who wants to quickly recover thier Pi in the event of a failed SD card.
-* Anyone who wants to keep thier Pi updated via automatic, unattended updates (I fully understand the arguments for and against using apt auto-updates on Debian based Linux). However, and because I have a good backup solution with a quick recovery time, I felt it was an acceptable risk for my situation. YMMV!
+* Anyone who wants to quickly recover their Pi in the event of a failed SD card.
+* Anyone who wants to keep their Pi updated via automatic, unattended updates (I fully understand the arguments for and against using apt auto-updates on Debian based Linux). However, and because I have a good backup solution with a quick recovery time, I felt it was an acceptable risk for my situation. YMMV!
 
 ## What do these scripts do?
 
@@ -15,8 +15,12 @@ This script makes an backup image of the Raspberry Pi SD card (/dev/mmcblk0), co
  
 My main goal with this script was to backup only the critical Pi system files to a remote machine. Since my Pi was mounted oudoors, in a generator enclosure , I needed to do the backup without taking the Pi offline, or shutting down to manually copy the SD card periodically. This script accomplishes that, and also trims the number backups in the mounted folder, so that only the newest five backups are kept. That gives me plenty of time to review the log files every few weeks and jump back 5 weeks if something bad happened.
 
+* While there may be several ways to accomplish this task, this script uses "dd" to backup the filesystem "live", while it is running. There seems to be some debate about using DD in this way as called out to me in a Facebook group. I advise that you do your research on this topic and determine for yourself if it is right for your use-case. For reference:
+https://www.raspberrypi.org/forums/viewtopic.php?t=211268
+
+
 #### _`rpi-temperature.sh`_  
-This script queries the rpi thermal sensors, converts the results to Farenheit, and writes the formatted entry to a logfile in a mounted folder. I was having an issue with thermal throttling since my Pi was mounted outside inside a backup generator enclosure. I cobbled this script together to periodically log the temos on my Pi. I used cron to automate the execution schedule and capture temp log entries when my gerator was idle, when it was running, points during the day, and points during the night. I also call this script from other scripts to determine if heavy processing jobs are having a significant impact on temps due to the unique mounting of my setup. It helped me determine optimal placement inside the generator enclosure and determine if a different case/fan setup was necessary for my Pi (it was).
+This script queries the rpi thermal sensors, converts the results to Farenheit, and writes the formatted entry to a logfile in a mounted folder. I was having an issue with thermal throttling since my Pi was mounted outside inside a backup generator enclosure. I cobbled this script together to periodically log the temps on my Pi. I used cron to automate the execution schedule and capture temp log entries when my generator was idle, when it was running, points during the day, and points during the night. I also call this script from other scripts to determine if heavy processing jobs are having a significant impact on temps due to the unique mounting of my setup. It helped me determine optimal placement inside the generator enclosure and determine if a different case/fan setup was necessary for my Pi (it was).
 
 ###### Example Logfile Output for _`rpi-temperature.sh`_ :
 ```
@@ -104,13 +108,13 @@ Fri 20 Sep 2019 04:01:45 AM EDT >> Package Updates Complete
 I had several specific goals I wanted to accomplish with these scripts.
 <dl>
     <dd>1. I wanted the scripts, and the resulting logfiles, to reside somewhere other than local on the Pi. If the Pi died, I needed to be able to recover quickly. That's why I have the scripts and logfiles saved in a mounted folder on a remote machine.</dd>
-    <dd>2. I wanted everything automated. I did not want to login to the Pi often to do routine maintenace. I just wanted to check logfiles periodically and scan for issues.</dd>
+    <dd>2. I wanted everything automated. I did not want to login to the Pi often to do routine maintenance. I just wanted to check logfiles periodically and scan for issues.</dd>
     <dd>3. I wanted simplicity. </dd>
 </dl>
 
 #### NOTE: _If you decide to use these scripts in your setup_;
 
-* They likely will work "out of the box". They will require some editing to fit your individual use case and network setup. The scripts refer to "/mnt/rpi_backup" in several locations. This is a remote share on an "always-on" server that is mounted locally on each boot of my RaspberryPi. As long as the remote machine is online when my Pi boots, "/mnt/rpi_backup" will always be available. I'll detail how to set that up for anyone that needs a hand with it.
+* They likely will not work "out of the box". They will require some editing to fit your individual use-case and network setup. The scripts refer to "/mnt/rpi_backup" in several locations. This is a remote share on an "always-on" server that is mounted locally on each boot of my RaspberryPi. As long as the remote machine is online when my Pi boots, "/mnt/rpi_backup" will always be available. I'll detail how to set that up for anyone that needs a hand with it.
 
 
 ## Prerequisites
