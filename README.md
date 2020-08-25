@@ -1,6 +1,9 @@
 # RaspberryPi Scripts for Automated Backup, Updates, and Monitoring
 
-This project consists of several scripts written to support a personal RaspberryPi project that I have had successfully running for over a year. Being new to RaspberryPi, and very rusty with bash scripting, it took some time, and a lot of changes to nail down the final working versions of these scripts. I've seen many people asking about RaspberryPi backups on various Pi Facebook groups, so I decided to share them here. I hope someone else can find them useful in their project.
+This project consists of several scripts written to support a personal RaspberryPi project that I have had successfully running for over a year. I've seen many people asking about RaspberryPi backups on various Pi Facebook groups, so I decided to share them here. I hope someone else can find them useful in their project. 
+
+These scripts were created from a variety of sources found in various places online. I do not have the original sources or I would have credited them here.
+
 
 ## Who are these scripts for?
 
@@ -13,9 +16,9 @@ This project consists of several scripts written to support a personal Raspberry
 #### _`rpi-backup.sh`_  
 This script makes an backup image of the Raspberry Pi SD card (/dev/mmcblk0), compresses it, and writes the resulting _'file.image.gz'_ to a share on another machine on the network that is mounted as a local folder. The resulting image file can be restored using any image writer software, like Rufus.  
  
-My main goal with this script was to backup only the critical Pi system files to a remote machine. Since my Pi was mounted oudoors, in a generator enclosure , I needed to do the backup without taking the Pi offline, or shutting down to manually copy the SD card periodically. This script accomplishes that, and also trims the number backups in the mounted folder, so that only the newest five backups are kept. That gives me plenty of time to review the log files every few weeks and jump back 5 weeks if something bad happened.
+My main goal with this script was to backup only the critical Pi system files to a remote machine. Since my Pi was mounted oudoors, and in a generator enclosure , I needed to do the backup without taking the Pi offline, or shutting down to manually copy the SD card, periodically. This script accomplishes that, and also trims the number backups in the mounted folder, so that only the newest five backups are kept. That gives me plenty of time to review the log files every few weeks and jump back 5 weeks if something bad happened.
 
-* While there may be several ways to accomplish this task, this script uses "dd" to backup the filesystem "live", while it is running. There seems to be some debate about using DD in this way as called out to me in a Facebook group. I advise that you do your research on this topic and determine for yourself if it is right for your use-case. For reference:
+* While there may be several good ways to accomplish this task, this script uses "dd" to backup the filesystem "live", while it is running. There seems to be some debate about using DD in this way as called out to me in a Facebook group. I advise that you do your research on this topic and determine for yourself if it is right for your use-case. For reference:
 https://www.raspberrypi.org/forums/viewtopic.php?t=211268
 
 
