@@ -219,8 +219,15 @@ To run the scripts manually for testing, use the following commands from console
 ###### Testing fstab mounting
 
 ```
+	To force mounting of all entries in the fstab file, type:
+		sudo mount -a
+		
+	Or, for manual mounting, a slightly different mount format is required.
 	Manual mount test:
 		sudo mount -t cifs -o rw,vers=3.0,credentials=/home/pi/.cifsuser //192.168.x.x/rpibackup /mnt/rpi_backup
+		
+	To verify mount, type:
+		df -h
 		
 	Unmount:
 		sudo umount -q /mnt/rpi_backup
