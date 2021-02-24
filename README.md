@@ -168,7 +168,7 @@ It can be created with the following commands:
 
 ```
 	username=yourwindowsshareusername
-    password=yourwindowsshareusername
+   	password=yourwindowsshareusername
 	#Domain=  (optional - uncomment if used)
 ```
 _<strong> press `crtl+o` to write the file, press `enter` to save, `ctrl+x` to exit nano editor </strong>_
@@ -190,13 +190,13 @@ _<strong> press `crtl+o` to write the file, press `enter` to save, `ctrl+x` to e
 <dd>
 
 ```
-	type:  sudo crontab -e
+    type:  sudo crontab -e
 
     These are examples of my cron entries. The last one will pipe the upgrade script to the logfile.
 
      Add these entries to bottom of the cron file as needed:
         0 3 * * 0,3,5 /bin/bash /mnt/rpi_backup/rpibackup.sh
-        0 14 * * * /bin/bash /mnt/rpi_backup/rpi-temerature.sh
+        0 14 * * * /bin/bash /mnt/rpi_backup/rpi-temperature.sh
         0 20 * * * /bin/bash /mnt/rpi_backup/rpi-temperature.sh
         0 4 * * FRI /bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpiupgrade.log 2>&1 -q -f 
 ``` 
@@ -212,7 +212,7 @@ To run the scripts manually for testing, use the following commands from console
 ###### Testing Scripts
 ```
 /bin/bash /mnt/rpi_backup/rpibackup.sh
-/bin/bash /mnt/rpi_backup/rpi-temerature.sh
+/bin/bash /mnt/rpi_backup/rpi-temperature.sh
 /bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpiupgrade.log 2>&1 -q -f
 ```
 
@@ -220,7 +220,10 @@ To run the scripts manually for testing, use the following commands from console
 
 ```
 	Manual mount test:
-		sudo mount -t cifs -o credentials=/home/pi/.cifsuser, uid=pi,gid=pi, //192.168.x.x/rpibackup /mnt/rpi_backup,rw 0 0
+		sudo mount -t cifs -o rw,vers=3.0,credentials=/home/pi/.cifsuser //192.168.x.x/rpibackup /mnt/rpi_backup
+		
+	Unmount:
+		sudo umount -q /mnt/rpi_backup
 
 ```
 
