@@ -168,7 +168,7 @@ It can be created with the following commands:
 
 ```
 	username=yourwindowsshareusername
-   	password=yourwindowsshareusername
+   	password=yourwindowssharepassword
 	#Domain=  (optional - uncomment if used)
 ```
 _<strong> press `crtl+o` to write the file, press `enter` to save, `ctrl+x` to exit nano editor </strong>_
