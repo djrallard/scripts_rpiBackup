@@ -2,7 +2,7 @@
 
 This project consists of several scripts written to support a personal RaspberryPi project that I have had successfully running for over a year. I've seen many people asking about RaspberryPi backups on various Pi Facebook groups, so I decided to share them here. I hope someone else can find them useful in their project. 
 
-These scripts were created from a variety of sources found in various places online. I do not have the original sources or I would have credited them here.
+These scripts were created from a variety of sources found in various places online. I do not have the original sources or I would have credited them here. If anyone is familiar with where these commands might have been first published, please let me know and I will happily credit those sources.
 
 
 ## Who are these scripts for?
@@ -18,7 +18,7 @@ This script makes an backup image of the Raspberry Pi SD card (/dev/mmcblk0), co
  
 My main goal with this script was to backup only the critical Pi system files to a remote machine. Since my Pi was mounted oudoors, and in a generator enclosure , I needed to do the backup without taking the Pi offline, or shutting down to manually copy the SD card, periodically. This script accomplishes that, and also trims the number backups in the mounted folder, so that only the newest five backups are kept. That gives me plenty of time to review the log files every few weeks and jump back 5 weeks if something bad happened.
 
-* While there may be several good ways to accomplish this task, this script uses "dd" to backup the filesystem "live", while it is running. There seems to be some debate about using DD in this way as called out to me in a Facebook group. I advise that you do your research on this topic and determine for yourself if it is right for your use-case. For reference:
+* While there may be several good ways to accomplish this task, this script uses "dd" to backup the filesystem "live", while it is running. There seems to be some debate about using DD in this way as called out to me in a Facebook group. I advise that you do your research on this topic and determine for yourself if it is right for your use-case. For reference:  
 https://www.raspberrypi.org/forums/viewtopic.php?t=211268
 
 
@@ -236,7 +236,7 @@ To run the scripts manually for testing, use the following commands from console
 
 ## License
 
-Free to use
+No License. Free to use and distribute with no restrictions.
 
 
 
