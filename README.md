@@ -116,7 +116,7 @@ The (2) software package requirements for these scripts are the "bc" and "pishri
 
 * **PiShrink:**
 The backup script will install pishrink if it is not installed.
-Install it manually from here is prefered:
+Install it manually from here if prefered:
 https://github.com/Drewsif/PiShrink
 
 * **BC:**  
@@ -162,7 +162,7 @@ It can be created with the following commands:
     Unmount:
         sudo umount -q /mnt/rpi_backup
 ```
-###### To Permanently mount at boot time (via fstab)
+###### To permanently mount at boot time (via fstab)
 ``` 
     sudo nano /etc/fstab
     
@@ -204,7 +204,8 @@ It can be created with the following commands:
 ## Testing help
 To run the scripts manually for testing, use the following commands from console.
 ###### Testing Scripts
-``` /bin/bash /mnt/rpi_backup/rpibackup.sh
+``` 
+/bin/bash /mnt/rpi_backup/rpibackup.sh
 /bin/bash /mnt/rpi_backup/rpi-temperature.sh
 /bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpiupgrade.log 2>&1 -q -f 
 ```
