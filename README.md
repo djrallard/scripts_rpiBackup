@@ -192,7 +192,7 @@ It can be created with the following commands:
 ``` 
     type:  sudo crontab -e
 
-    These are examples of my cron entries. The last one will pipe the upgrade script to the logfile.
+    These are examples of my cron entries. The last one will pipe the upgrade script output to the logfile.
 
      Add these entries to bottom of the cron file as needed:
         0 3 * * 0,3,5 /bin/bash /mnt/rpi_backup/rpi-backup.sh
