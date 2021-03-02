@@ -195,19 +195,19 @@ It can be created with the following commands:
     These are examples of my cron entries. The last one will pipe the upgrade script to the logfile.
 
      Add these entries to bottom of the cron file as needed:
-        0 3 * * 0,3,5 /bin/bash /mnt/rpi_backup/rpibackup.sh
+        0 3 * * 0,3,5 /bin/bash /mnt/rpi_backup/rpi-backup.sh
         0 14 * * * /bin/bash /mnt/rpi_backup/rpi-temperature.sh
         0 20 * * * /bin/bash /mnt/rpi_backup/rpi-temperature.sh
-        0 4 * * FRI /bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpiupgrade.log 2>&1 -q -f 
+        0 4 * * FRI /bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpi-debautoupgrade.log 2>&1 -q -f 
 ``` 
 ##### **_press `crtl+o` to write the file, press `enter` to save, `ctrl+x` to exit nano editor_**
 ## Testing help
 To run the scripts manually for testing, use the following commands from console.
 ###### Testing Scripts
 ``` 
-/bin/bash /mnt/rpi_backup/rpibackup.sh
+/bin/bash /mnt/rpi_backup/rpi-backup.sh
 /bin/bash /mnt/rpi_backup/rpi-temperature.sh
-/bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpiupgrade.log 2>&1 -q -f 
+/bin/bash /mnt/rpi_backup/rpi-debautoupgrade.sh >> /mnt/rpi_backup/rpi-debautoupgrade.log 2>&1 -q -f 
 ```
 ## License
 No License. Free to use and distribute with no restrictions.
