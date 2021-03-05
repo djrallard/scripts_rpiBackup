@@ -27,7 +27,6 @@ echo "Checking mount at $backupDir ..."
 if  mountpoint -q $backupDir; then
     echo "$backupDir is mounted, continue." 
     cd $backupDir
-   
 else  
     echo "$backupDir is not mounted. Script cannot continue."
     echo "Check that $backupDir is properly mounted and writable and retry the script."
@@ -39,8 +38,7 @@ echo "Creating DD image of device $localDev - $backupDir/$outFile ..."
 sudo dd if=$localDev of=$backupDir/$outFile
 if ! [ -f "$backupDir/$outFile" ]; then
     echo "Something went wrong; ERROR: DD finished, but $outFile does not exist in $backupDir"
-    echo "exiting script ..."
-    exit
+    echo "exiting script ..." && exit
 else
     echo "DD Backup file: $outFile - Created"
 fi
